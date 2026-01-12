@@ -16,7 +16,7 @@ int main() {
 		cin >> n;
 		arr.push_back(n);
 	}
-	
+
 	for (int i = 1; i < NN + 1; i++) {
 		arr[i] = arr[i - 1] + arr[i];
 	}
@@ -24,6 +24,6 @@ int main() {
 	for (int i = 0; i < M; i++) {
 		int a, b;
 		cin >> a >> b;
-		cout << arr[b] - arr[a-1] << '\n';
+		cout << arr[b] - arr[a - 1] << '\n';
 	}
 }
