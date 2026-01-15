@@ -1,29 +1,48 @@
 #include <iostream>
-#include <vector>
+#include <unordered_set>
+#include <string>
 using namespace std;
 
 int main() {
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
-	int N, M, NN;
-	cin >> N >> M;
-	NN = N;
-	vector <long long> arr;
+	unordered_set<int> arr;
+	int M;
+	cin >> M;
 
-	arr.push_back(0);
-	for (int i = 0; i < N; i++) {
-		long long n;
-		cin >> n;
-		arr.push_back(n);
-	}
-	
-	for (int i = 1; i < NN + 1; i++) {
-		arr[i] = arr[i - 1] + arr[i];
-	}
+	while (M--) {
+		int x;
+		string program;
+		cin >> program;
 
-	for (int i = 0; i < M; i++) {
-		int a, b;
-		cin >> a >> b;
-		cout << arr[b] - arr[a-1] << '\n';
+		if (program == "add") {
+			cin >> x;
+			arr.insert(x);
+		}
+
+		else if (program == "remove") {
+			cin >> x;
+			arr.erase(x);
+		}
+
+		else if (program == "check") {
+			cin >> x;
+			if (arr.find(x) != arr.end()) {
+				cout << 1 << '\n';
+			}
+			else cout << 0 << '\n';
+		}
+
+		else if (program == "toggle") {
+			cin >> x;
+			if (arr.find(x) != arr.end()) arr.erase(x);
+			else arr.insert(x);
+		}
+
+		else if (program == "all") {
+			unordered_set<int> arr = { 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 };
+		}
+
+		else unordered_set<int> arr = {};
 	}
 }
